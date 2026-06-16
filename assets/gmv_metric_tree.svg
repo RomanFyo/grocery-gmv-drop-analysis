@@ -1,0 +1,91 @@
+<svg viewBox="-40 60 890 470" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .node { rx: 10; ry: 10; stroke-width: 1.5; }
+      .root { fill: #1f2a44; stroke: #1f2a44; }
+      .lvl1 { fill: #2563eb; stroke: #2563eb; }
+      .lvl2 { fill: #3b82f6; stroke: #3b82f6; }
+      .lvl3 { fill: #60a5fa; stroke: #60a5fa; }
+      .culprit { fill: #dc2626; stroke: #dc2626; }
+      .stable { fill: #94a3b8; stroke: #94a3b8; }
+      .label { fill: #ffffff; font-weight: 600; }
+      .sub { fill: #e2e8f0; font-weight: 400; }
+      .op { fill: #1f2328; font-size: 22px; font-weight: 700; }
+      .edge { stroke: #cbd5e1; stroke-width: 2; fill: none; }
+      .note { fill: #1f2328; font-size: 12px; }
+      .legend { fill: #1f2328; font-size: 12px; }
+      @media (prefers-color-scheme: dark) {
+        .op { fill: #e6edf3; }
+        .note { fill: #e6edf3; }
+        .legend { fill: #e6edf3; }
+      }
+    </style>
+  </defs>
+
+  <!-- Edges -->
+  <path class="edge" d="M490,110 C490,135 250,135 250,160"/>
+  <path class="edge" d="M490,110 C490,135 730,135 730,160"/>
+
+  <path class="edge" d="M250,210 C250,235 150,235 150,260"/>
+  <path class="edge" d="M250,210 C250,235 350,235 350,260"/>
+
+  <path class="edge" d="M150,310 C150,335 65,335 65,360"/>
+  <path class="edge" d="M150,310 C150,335 250,335 250,360"/>
+
+  <path class="edge" d="M250,410 C250,445 250,445 250,460"/>
+
+  <!-- Root: GMV -->
+  <rect class="node root" x="390" y="70" width="200" height="42"/>
+  <text x="490" y="90" text-anchor="middle" class="label" font-size="15">GMV (оборот)</text>
+  <text x="490" y="106" text-anchor="middle" class="sub" font-size="11">-2.72 млн р (-24%)</text>
+
+  <!-- operator x between level1 -->
+  <text x="490" y="148" text-anchor="middle" class="op">=</text>
+  <text x="490" y="190" text-anchor="middle" class="op">×</text>
+
+  <!-- Level 1 left: число заказов -->
+  <rect class="node lvl1" x="150" y="160" width="200" height="46"/>
+  <text x="250" y="181" text-anchor="middle" class="label" font-size="14">Число заказов</text>
+  <text x="250" y="198" text-anchor="middle" class="sub" font-size="11">главный драйвер падения</text>
+
+  <!-- Level 1 right: средний чек -->
+  <rect class="node stable" x="630" y="160" width="200" height="46"/>
+  <text x="730" y="181" text-anchor="middle" class="label" font-size="14">Средний чек</text>
+  <text x="730" y="198" text-anchor="middle" class="sub" font-size="11">13% падения, слабо</text>
+
+  <!-- operator under число заказов -->
+  <text x="250" y="246" text-anchor="middle" class="op">=  ×</text>
+
+  <!-- Level 2 left: число покупателей -->
+  <rect class="node lvl2" x="50" y="260" width="200" height="46"/>
+  <text x="150" y="281" text-anchor="middle" class="label" font-size="14">Число покупателей</text>
+  <text x="150" y="298" text-anchor="middle" class="sub" font-size="11">упало</text>
+
+  <!-- Level 2 right: частота покупок -->
+  <rect class="node stable" x="250" y="260" width="200" height="46"/>
+  <text x="350" y="281" text-anchor="middle" class="label" font-size="14">Частота покупок</text>
+  <text x="350" y="298" text-anchor="middle" class="sub" font-size="11">стабильна</text>
+
+  <!-- operator under число покупателей -->
+  <text x="150" y="346" text-anchor="middle" class="op">=  ×</text>
+
+  <!-- Level 3 left: MAU -->
+  <rect class="node stable" x="-30" y="360" width="190" height="46"/>
+  <text x="65" y="381" text-anchor="middle" class="label" font-size="14">MAU</text>
+  <text x="65" y="398" text-anchor="middle" class="sub" font-size="11">стабилен, оттока нет</text>
+
+  <!-- Level 3 right: конверсия в покупку -->
+  <rect class="node lvl3" x="150" y="360" width="200" height="46"/>
+  <text x="250" y="381" text-anchor="middle" class="label" font-size="14">Конверсия в покупку</text>
+  <text x="250" y="398" text-anchor="middle" class="sub" font-size="11">просела</text>
+
+  <!-- operator under конверсия -->
+  <text x="250" y="446" text-anchor="middle" class="op">= произведение шагов</text>
+
+  <!-- Culprit: voronka step -->
+  <rect class="node culprit" x="120" y="460" width="260" height="60"/>
+  <text x="250" y="483" text-anchor="middle" class="label" font-size="13">Карточка товара -> корзина</text>
+  <text x="250" y="500" text-anchor="middle" class="sub" font-size="11">0.53 -> 0.47  (-11.6%)</text>
+  <text x="250" y="514" text-anchor="middle" class="sub" font-size="11">слом ~1 апреля, z=10.4</text>
+
+</svg>
